@@ -1,0 +1,35 @@
+ #!/bin/bash
+
+filename=$(basename "$1")
+
+extension="${filename##*.}"
+
+filename="${filename%.*}"
+
+file1=$filename'1'
+file2=$filename'2'
+file3=$filename'3'
+file4=$filename'4'
+echo "cc -pedantic -g $1 -o $file1"
+echo "" #echo "\n\n\n"
+echo `cc -pedantic -g $1 -o $file1 |  more`
+echo "--complete--" #echo "\n\n\n"
+echo ""
+read -p ""
+echo "cc -ansi -g $1 -o $file2"
+echo "" #echo "\n"
+echo `cc -ansi -g $1 -o $file2| more`
+echo "--complete--" #o "\n\n\n"
+echo ""
+read -p ""
+echo "cc  -g $1 -o $file3"
+echo "" #echo "\n\n\n"
+echo `cc -g $1 -o $file3| more`
+echo "--complete--" #echo "\n\n\n"
+echo ""
+read -p ""
+echo "cc -pedantic -ansi -g  $1 -o $file4"
+echo "" #echo "\n\n\n"
+echo `cc -pedantic -g -ansi $1 -o $file4| more`
+echo "--complete--" #echo "\n\n\n"
+echo ""
